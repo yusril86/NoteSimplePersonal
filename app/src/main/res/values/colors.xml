@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="white">#dde6ec</color>
+    <color name="blue">#7ec4ed</color>
+    <color name="yellow">#d0fc7d</color>
+    <color name="pink">#ed579a</color>
+    <color name="green">#2aed76</color>
+    <color name="red">#dc1f0e</color>
+    <color name="grey">#A5CAD2</color>
+    <color name="jingga">#FFE4d9</color>
+
+
+    <array name="demo_colors">
+        <item>@color/white</item>
+        <item>@color/blue</item>
+        <item>@color/yellow</item>
+        <item>@color/pink</item>
+        <item>@color/green</item>
+        <item>@color/red</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimaryDark</item>
+        <item>@color/colorAccent</item>
+        <item>@color/grey</item>
+        <item>@color/jingga</item>
+    </array>
+</resources>

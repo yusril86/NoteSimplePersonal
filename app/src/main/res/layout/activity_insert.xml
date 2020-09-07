@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InsertActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <EditText
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_tittle"
+            android:hint="Masukkan Judul"
+            android:textSize="25sp"
+            android:inputType="textCapSentences"
+            tools:ignore="Autofill" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_note"
+            android:layout_below="@id/edt_tittle"
+            android:hint="Masukkan Catatan"
+            android:inputType="textMultiLine"
+            android:minLines="6"
+            app:layout_constraintTop_toBottomOf="@id/edt_tittle"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_tanggal"
+            android:layout_below="@id/edt_tittle"
+            android:hint="Masukkan Catatan"
+            android:inputType="textMultiLine"
+            app:layout_constraintTop_toBottomOf="@id/edt_note"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            />
+        <com.thebluealliance.spectrum.SpectrumPalette
+            android:id="@+id/palette"
+           app:layout_constraintTop_toBottomOf="@id/edt_tanggal"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="20dp"
+            app:spectrum_colors="@array/demo_colors"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+
+       <ImageButton
+           android:layout_width="100dp"
+           android:layout_height="50dp"
+           app:layout_constraintTop_toBottomOf="@id/palette"
+           app:layout_constraintStart_toStartOf="@id/palette"
+           app:layout_constraintEnd_toEndOf="@id/palette"
+           android:backgroundTint="@color/blue"
+           android:src="@drawable/ic_add"
+           android:layout_marginTop="32dp"
+           android:id="@+id/btn_save"
+           />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

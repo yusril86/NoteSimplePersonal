@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="1dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:id="@+id/card_item">
+
+    <LinearLayout
+        android:id="@+id/line"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#49000000"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_tittle"
+            android:text="Judul Catatan"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            />
+        <TextView
+            android:layout_below="@id/tv_tittle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_note"
+            android:text="Catatan"
+            android:textSize="18dp"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_below="@id/tv_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_date"
+            android:text="Tanggal : 1/9/2020"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:gravity="end"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
