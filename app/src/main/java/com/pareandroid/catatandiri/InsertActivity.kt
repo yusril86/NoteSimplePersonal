@@ -1,5 +1,6 @@
 package com.pareandroid.catatandiri
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,8 +33,11 @@ class InsertActivity : AppCompatActivity() {
                 edt_tittle.error = "Mohon Isikan Judul dan Catatan"
             }else{
                 saveNote(NoteModel(judul = judul,catatan = catatan,tanggal = date_n,color = warna))
+                val intent = Intent(this,MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
             }
-            finish()
         }
     }
 

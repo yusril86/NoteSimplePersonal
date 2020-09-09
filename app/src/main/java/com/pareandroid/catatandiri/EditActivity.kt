@@ -1,5 +1,6 @@
 package com.pareandroid.catatandiri
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -54,12 +55,19 @@ class EditActivity : AppCompatActivity() {
                 edt_noteEdit.error="Jangan Kosongkan Field"
             }else{
                 update(NoteModel(id = itemNote.id,judul = judul,catatan = catatan,tanggal = date_n,color = warna))
+                val intent = Intent(this,MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
             }
-            finish()
         }
 
         btn_delete.setOnClickListener {
             deleteNote(itemNote)
+
+            val intent = Intent(this,MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
             finish()
         }
     }
