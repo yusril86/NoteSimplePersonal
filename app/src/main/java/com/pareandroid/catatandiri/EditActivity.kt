@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.pareandroid.catatandiri.database.NoteDao
 import com.pareandroid.catatandiri.database.RoomDatabase
 import com.pareandroid.catatandiri.model.NoteModel
@@ -63,12 +64,29 @@ class EditActivity : AppCompatActivity() {
         }
 
         btn_delete.setOnClickListener {
-            deleteNote(itemNote)
+            val mAlertBuilder = AlertDialog.Builder(this@EditActivity)
+            mAlertBuilder.setTitle("Hapus Data")
+            mAlertBuilder.setMessage("Anda Yakin Ingin Hapus ?")
+            mAlertBuilder.setCancelable(false)
 
-            val intent = Intent(this,MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
+            mAlertBuilder.apply {
+                setPositiveButton("Ya"){dialogInterface, i ->
+                    deleteNote(itemNote)
+
+                    val intent = Intent(this@EditActivity,MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                    finish()
+                }
+
+                setNegativeButton("Tidak"){dialogInterface, i ->
+                    Toast.makeText(this@EditActivity, "Cancel", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            val alertDialog = mAlertBuilder.create()
+            alertDialog.show()
+
         }
     }
 
