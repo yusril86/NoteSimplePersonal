@@ -14,19 +14,23 @@
         >
 
         <EditText
+            android:padding="8dp"
+            android:background="@drawable/bg_text"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_titleEdit"
-            android:hint="Masukkan Judul"
+            android:hint="Masukkan Judul "
             android:textSize="25sp"
             android:inputType="textCapSentences"
             />
         <EditText
+            android:padding="8dp"
+            android:background="@drawable/bg_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_noteEdit"
-            android:hint="Masukkan Catatan"
+            android:hint="  Masukkan Catatan"
             android:inputType="textMultiLine"
             android:minLines="6"
             app:layout_constraintTop_toBottomOf="@id/edt_titleEdit"

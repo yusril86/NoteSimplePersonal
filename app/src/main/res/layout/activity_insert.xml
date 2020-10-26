@@ -14,15 +14,19 @@
         >
 
         <EditText
+            android:background="@drawable/bg_text"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_tittle"
-            android:hint="Masukkan Judul"
+            android:hint="Masukkan Judul "
             android:textSize="25sp"
+            android:padding="8dp"
             android:inputType="textCapSentences"
             tools:ignore="Autofill" />
         <EditText
+            android:padding="8dp"
+            android:background="@drawable/bg_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_note"
