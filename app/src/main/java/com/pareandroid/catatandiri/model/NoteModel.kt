@@ -15,6 +15,7 @@ data class NoteModel(
     @ColumnInfo(name = "judul") var judul : String = "",
     @ColumnInfo(name = "catatan") var catatan : String = "",
     @ColumnInfo(name = "tanggal") var tanggal : String = "",
+    @ColumnInfo(name = "image") var image : String = "",
     @ColumnInfo(name = "color") var color : Int = 0
 ):Parcelable
     

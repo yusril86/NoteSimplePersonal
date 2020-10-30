@@ -11,6 +11,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
+        android:id="@+id/container"
+        android:padding="16dp"
         >
 
         <EditText
@@ -20,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_titleEdit"
-            android:hint="Masukkan Judul "
+            android:hint="@string/judul"
             android:textSize="25sp"
             android:inputType="textCapSentences"
             />
@@ -30,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_noteEdit"
-            android:hint="  Masukkan Catatan"
+            android:hint="@string/catatan"
             android:inputType="textMultiLine"
             android:minLines="6"
             app:layout_constraintTop_toBottomOf="@id/edt_titleEdit"
@@ -46,14 +48,49 @@
             android:layout_marginTop="20dp"
             android:visibility="gone"
             />
+        <androidx.appcompat.widget.AppCompatImageView
+
+            android:id="@+id/iv_imageNoteEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintTop_toBottomOf="@id/btn_addImageEdit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="16dp"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:visibility="gone"
+            android:id="@+id/tv_insertPictureEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tambah_gambar"
+            app:layout_constraintBottom_toTopOf="@id/btn_addImageEdit"
+            app:layout_constraintLeft_toLeftOf="@id/btn_addImageEdit" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:visibility="gone"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:elevation="16dp"
+            app:layout_constraintTop_toBottomOf="@id/edt_tanggalEdit"
+            app:layout_constraintStart_toStartOf="@id/edt_tanggalEdit"
+            app:layout_constraintEnd_toEndOf="@id/edt_tanggalEdit"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_add"
+            android:layout_marginTop="32dp"
+            android:id="@+id/btn_addImageEdit"/>
+
         <com.thebluealliance.spectrum.SpectrumPalette
             android:id="@+id/editPalette"
+            app:layout_constraintTop_toBottomOf="@id/iv_imageNoteEdit"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="20dp"
             app:spectrum_colors="@array/demo_colors"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/edt_noteEdit"
+
             />
         <ImageButton
             android:visibility="gone"
