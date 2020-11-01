@@ -1,8 +1,12 @@
 package com.pareandroid.catatandiri.adapter
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
@@ -10,6 +14,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.pareandroid.catatandiri.EditActivity
 import com.pareandroid.catatandiri.R
+import com.pareandroid.catatandiri.database.NoteDao
+import com.pareandroid.catatandiri.database.RoomDatabase
 import com.pareandroid.catatandiri.model.NoteModel
 import kotlinx.android.synthetic.main.item_note.view.*
 
@@ -17,6 +23,8 @@ class NoteAdapter () :RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(),Filtera
 
     private var mListNote : MutableList<NoteModel> = ArrayList()
     private var mFilterNote : MutableList<NoteModel> = ArrayList()
+    private lateinit var database : RoomDatabase
+    private lateinit var dao: NoteDao
 
     fun updateAdapter(mData : List<NoteModel>){
         if (mListNote == null){
@@ -34,7 +42,7 @@ class NoteAdapter () :RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(),Filtera
                 }
 
                 override fun getNewListSize(): Int {
-                   return  mData.size
+                    return  mData.size
                 }
 
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
@@ -72,6 +80,7 @@ class NoteAdapter () :RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(),Filtera
 
                 card_item.setCardBackgroundColor(color)
 
+
                 setOnClickListener {
 
                     val intent = Intent(holder.itemView.context,EditActivity::class.java)
@@ -89,7 +98,7 @@ class NoteAdapter () :RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(),Filtera
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
-               val charString : String = p0.toString()
+                val charString : String = p0.toString()
                 if (charString.isEmpty()){
                     mFilterNote = mListNote
                 }else{
@@ -107,7 +116,7 @@ class NoteAdapter () :RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(),Filtera
             }
 
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-               mFilterNote = p1?.values as MutableList<NoteModel>
+                mFilterNote = p1?.values as MutableList<NoteModel>
                 notifyDataSetChanged()
             }
 
@@ -118,6 +127,12 @@ class NoteAdapter () :RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(),Filtera
     {
         mFilterNote.clear()
     }
+
+    /* fun deleteNote (itemNote : NoteModel , context: Context){
+         database = RoomDatabase.getDatabase(context)!!
+         dao = database.noteDao()!!
+         dao.delete(itemNote)
+     }*/
 
 
 }
