@@ -54,6 +54,7 @@ class InsertActivity : AppCompatActivity() {
         val file = File(applicationContext.filesDir, "/Backup/" + (cal.timeInMillis.toString() + ".jpg"))
         uriImage = Uri.fromFile(file)*/
 
+        uriImage = Uri.parse(BASE_IMAGE_URL)
 
         btn_addImage.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
