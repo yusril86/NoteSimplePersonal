@@ -39,6 +39,12 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
 
+        supportActionBar?.apply {
+            title = "Edit"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         database = RoomDatabase.getDatabase(applicationContext)!!
         dao = database.noteDao()!!
 
@@ -169,7 +175,10 @@ class EditActivity : AppCompatActivity() {
 
         if ( resultCode == Activity.RESULT_OK && requestCode == SELECT_FILE){
             if (data != null) {
-
+                contentResolver.takePersistableUriPermission(
+                    uriImage,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
                 uriImage = data.data!!
                 iv_imageNoteEdit.setImageURI(uriImage)
             }
@@ -178,7 +187,9 @@ class EditActivity : AppCompatActivity() {
         }
     }
 
-
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 
 }

@@ -2,19 +2,11 @@ package com.pareandroid.catatandiri
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
-import android.util.Base64.DEFAULT
-import android.util.Base64.encodeToString
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.pareandroid.catatandiri.database.NoteDao
@@ -22,9 +14,7 @@ import com.pareandroid.catatandiri.database.RoomDatabase
 import com.pareandroid.catatandiri.model.NoteModel
 import com.thebluealliance.spectrum.SpectrumPalette
 import kotlinx.android.synthetic.main.activity_insert.*
-import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,6 +32,12 @@ class InsertActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert)
 
+        supportActionBar?.apply {
+            title = "Insert"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         //Database init
         database = RoomDatabase.getDatabase(applicationContext)!!
         dao = database.noteDao()!!
@@ -50,11 +46,11 @@ class InsertActivity : AppCompatActivity() {
         palette.setOnColorSelectedListener(SpectrumPalette.OnColorSelectedListener { color ->colors  = color  })
         var date_n = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date()) //get hold of textview.
 
-        /*val cal = Calendar.getInstance()
+        val cal = Calendar.getInstance()
         val file = File(applicationContext.filesDir, "/Backup/" + (cal.timeInMillis.toString() + ".jpg"))
-        uriImage = Uri.fromFile(file)*/
+        uriImage = Uri.fromFile(file)
 
-        uriImage = Uri.parse(BASE_IMAGE_URL)
+//        uriImage = Uri.parse(BASE_IMAGE_URL)
 
         btn_addImage.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
@@ -114,15 +110,20 @@ class InsertActivity : AppCompatActivity() {
         if ( resultCode == Activity.RESULT_OK && requestCode == SELECT_FILE){
             if (data != null) {
                uriImage = data.data!!
+                contentResolver.takePersistableUriPermission(
+                    uriImage,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
                 iv_imageNote.setImageURI(uriImage)
+
           }
         }else{
             Toast.makeText(this@InsertActivity, "Fail Load Image", Toast.LENGTH_SHORT).show()
         }
     }
 
-
-
-
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }
